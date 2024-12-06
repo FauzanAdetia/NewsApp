@@ -1,10 +1,24 @@
 // eslint-disable-next-line no-unused-vars
+import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./../App.css"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function MainLayout() {
+
+    const [query, setQuery] = useState(""); // State untuk menyimpan input pengguna
+    const navigate = useNavigate();
+  
+    const handleSearch = (e) => {
+      e.preventDefault(); // Mencegah reload halaman
+      if (query.trim()) {
+        // Navigasi ke URL dinamis
+        navigate(`/Search/${query}`);
+      }
+    };
     return (
         <>
         <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#4b5759" }}>
@@ -36,12 +50,14 @@ function MainLayout() {
                         <Link to="/Saved" className="nav-link text-white">Saved</Link>
                     </li>
                 </ul>
-                <form className="d-flex" role="search">
+                <form className="d-flex" role="search" onSubmit={handleSearch}>
                     <input
                     className="form-control me-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     />
                     <button className="btn btn-warning" type="submit">
                     Search

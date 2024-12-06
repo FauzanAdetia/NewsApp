@@ -5,7 +5,8 @@ import MainLayout from './layouts/MainLayout';
 import Covid from './pages/Covid';
 import Programming from './pages/Programming';
 import Home from './pages/Home.jsx';
-import Save from './pages/Save.jsx'
+import Save from './pages/Save.jsx';
+import Search from './pages/Search.jsx';
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path : "/Saved",
                 element : <Save />
+            },
+            {
+                path : "/Search/:keyword",
+                element : <Search />
             }
         ]
     }
