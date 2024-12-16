@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./../App.css"
+import "./../App.css";
+
 
 
 export default function Programming() {
+    const savedNews = useSelector((state) => state.news.save); // Mengambil artikel yang disimpan dari Redux Store
 
     return (
         <div>
@@ -17,26 +21,20 @@ export default function Programming() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>
-                            dkwewfwedcdcdd <br />
-                            <button type="button" className="btn btn-info btn-sm mt-2">News Page</button>
-                        </td>
-                        <td>wdcwcw</td>
-                        <td>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolorum natus aspernatur rem rerum, ipsum repudiandae in. Similique, dolore dolores nobis, at tenetur reprehenderit eaque qui possimus sint commodi dignissimos.
-                        </td>
+
+                    {savedNews.map((article) => (
+                        <tr key={article._id}>
+                            <td>{article.source} - {article.byline.original} <br />
+                                <Link to={article.web_url}>
+                                    <button type="button" className="btn btn-info me-2">News Page</button>
+                                </Link>
+                            </td>
+                            <td>{article.headline.main}</td>
+                            <td>{article.lead_paragraph}</td>
                         </tr>
-                        <tr>
-                        <td>
-                            Example Source <br />
-                            <button type="button" className="btn btn-info btn-sm mt-2">News Page</button>
-                        </td>
-                        <td>Example Title</td>
-                        <td>
-                            Another example of a description goes here to showcase how the table can look with more rows and text. Bootstrap makes it easy to style tables elegantly.
-                        </td>
-                        </tr>
+                    ))}
+
+                        
                     </tbody>
                 </table>
 

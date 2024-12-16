@@ -1,28 +1,21 @@
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchNews } from "../store/slice";
 import { Link } from "react-router-dom";
-
+import { Save, Unsave } from "../store/slice";
 
 
 export default function Home() {
-  const [show, setShow] = useState(false);
-
   const news = useSelector((state) => state.news.news);
-
+  const savedNews = useSelector((state) => state.news.save);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchNews("Indonesia"));}
 ,  [])
-  useEffect(() => {
-    const timeout = setTimeout(() => setShow(true), 100);
-    return () => clearTimeout(timeout);
-  }, []);
 
-  
-  
+  const isSaved = (id) => savedNews.some((item) => item._id === id);
 
   return (
     <>
@@ -31,25 +24,36 @@ export default function Home() {
 
       {news.map(News =>(
         // eslint-disable-next-line react/jsx-key
-        (<div key={News.abstract} className={`col-12 col-sm-6 col-md-4 col-lg-3 p-3 ${show ? "show" : ""}`}>
+        (<div key={News._id} className={`col-12 col-sm-6 col-md-4 col-lg-3 p-3`}>
           <div className="card transition-card">
             <div className="card-body">
               <h6 className="card-subtitle mb-2 text-body-secondary">{News.source}</h6>
-              <h5 className="card-title">{News.abstract}</h5>
+              <h5 className="card-title">{News.headline.main}</h5>
+              <h6 className="card-subtitle mb-2 text-body-secondary">{News.byline.original}</h6>
               <p className="card-text text-truncate-two-lines">
                 {News.lead_paragraph}
               </p>
               <Link to={News.web_url}>
                 <button type="button" className="btn btn-info me-2">News Page</button>
               </Link>
-              <button type="button" className="btn btn-primary">Save</button>
+              <button
+                type="button"
+                className={`btn ${isSaved(News._id) ? "btn-danger" : "btn-primary"}`}
+                onClick={() => {
+                  if (isSaved(News._id)) {
+                    dispatch(Unsave(News._id));
+                  } else {
+                    dispatch(Save(News._id));
+                  }
+                }}
+              >
+                {isSaved(News._id) ? "Unsave" : "Save"}
+              </button>
             </div>
           </div>
         </div>
         )
       ))}
-
-
     </>
   );
 }

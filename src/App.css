@@ -1,17 +1,9 @@
 
 /* Default state (sebelum muncul) */
-.transition-card {
-  opacity: 0;
-  transform: translateX(-100px); /* Posisikan elemen di luar layar kiri */
-  transition: all 0.6s ease-in-out;
 
-}
 
 /* State aktif (setelah muncul) */
-.show .transition-card {
-  opacity: 1;
-  transform: translateX(0); /* Kembalikan ke posisi normal */
-}
+
 
 body{
   background-color: #E2E3E5;
