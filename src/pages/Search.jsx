@@ -20,7 +20,6 @@ export default function Search() {
 
     const isSaved = (id) => savedNews.some((item) => item._id === id);  
     
-    
 
     return (
         <>

@@ -12,8 +12,8 @@ function MainLayout() {
     const [query, setQuery] = useState(""); // State untuk menyimpan input pengguna
     const navigate = useNavigate();
   
-    const handleSearch = () => {
-      // Mencegah reload halaman
+    const handleSearch = (e) => {
+        e.preventDefault(); // Mencegah reload halaman
       if (query.trim()) {
         // Navigasi ke URL dinamis
         navigate(`/Search/${query}`);
