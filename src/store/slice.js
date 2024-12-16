@@ -9,7 +9,6 @@ export const fetchNews = createAsyncThunk(
     const data = await response.json();
     const result = data.response.docs;
     return result;
-  
   }
 );
 
