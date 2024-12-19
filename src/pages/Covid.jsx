@@ -21,7 +21,7 @@ export default function Covid() {
 
   return (
     <>
-      <h1 style={{"textAlign" : "center"}}>News</h1>
+      <h1 style={{"textAlign" : "center"}}>Covid-19 News</h1>
       <hr />
 
       {news.map(News =>(

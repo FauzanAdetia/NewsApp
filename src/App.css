@@ -1,16 +1,11 @@
-
-/* Default state (sebelum muncul) */
-
-
-/* State aktif (setelah muncul) */
-
-
 body{
   background-color: #E2E3E5;
 }
 .custom-table{
   padding: 100px;
 }
+
+
 
 .text-truncate-two-lines {
   display: -webkit-box;
