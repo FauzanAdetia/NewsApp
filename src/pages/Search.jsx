@@ -34,7 +34,7 @@ export default function Search() {
                     <h6 className="card-subtitle mb-2 text-muted text-truncate">
                         {News.source}
                     </h6>
-                    <h5 className="card-title text-dark mb-3 text-truncate-two-lines">
+                    <h5 className="card-title text-dark mb-3 text-truncate-three-lines">
                         {News.headline.main}
                     </h5>
                     <h6 className="card-subtitle mb-3 text-muted text-truncate">

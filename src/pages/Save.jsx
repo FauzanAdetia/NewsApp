@@ -7,7 +7,7 @@ export default function Programming() {
     const savedNews = useSelector((state) => state.news.save);
     return (
         <div className="container">
-        <h2 className="text-center my-4">Saved News Articles</h2>
+        <h2 className="text-center display-4 mb-4">Saved News Articles</h2>
         <table className="table table-bordered table-striped table-hover align-middle custom-table shadow-sm">
             <thead className="text-center" >
             <tr >
