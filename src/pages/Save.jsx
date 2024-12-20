@@ -21,7 +21,7 @@ export default function Programming() {
                 savedNews.map((article) => (
                 <tr key={article._id}>
                     <td className="text-center">
-                    <span className="fw-bold">{article.source}</span> <br />
+                    <span className="text-muted">{article.source} - </span> 
                     <small className="text-muted">{article.byline?.original}</small>
                     <br />
                     <Link to={article.web_url} target="_blank" rel="noopener noreferrer">
