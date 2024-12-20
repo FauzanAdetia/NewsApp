@@ -19,41 +19,52 @@ export default function Programming() {
 
   return (
     <>
-      <h1 style={{"textAlign" : "center"}}>Programming News</h1>
-      <hr />
-
-      {news.map(News =>(
-        // eslint-disable-next-line react/jsx-key
-        (<div key={News._id} className={`col-12 col-sm-6 col-md-4 col-lg-3 p-3`}>
-          <div className="card transition-card">
-            <div className="card-body">
-              <h6 className="card-subtitle mb-2 text-body-secondary">{News.source}</h6>
-              <h5 className="card-title">{News.headline.main}</h5>
-              <h6 className="card-subtitle mb-2 text-body-secondary">{News.byline.original}</h6>
-              <p className="card-text text-truncate-two-lines">
-                {News.lead_paragraph}
-              </p>
-              <Link to={News.web_url}>
-                <button type="button" className="btn btn-info me-2">News Page</button>
-              </Link>
-              <button
-                type="button"
-                className={`btn ${isSaved(News._id) ? "btn-danger" : "btn-primary"}`}
-                onClick={() => {
-                  if (isSaved(News._id)) {
-                    dispatch(Unsave(News._id)); // Hapus dari state.save
-                  } else {
-                    dispatch(Save(News._id)); // Tambahkan ke state.save
-                  }
-                }}
-              >
-                {isSaved(News._id) ? "Unsave" : "Save"}
-              </button>
+      <div className="container">
+        <h1 className="text-center display-4 mb-4">Programming News</h1>
+        <hr className="mb-5" />
+        <div className="row g-4">
+          {news.map((News) => (
+            <div key={News._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div className="card shadow-sm border-0 transition-card h-100">
+                <div className="card-body d-flex flex-column">
+                  <h6 className="card-subtitle mb-2 text-muted text-truncate">
+                    {News.source}
+                  </h6>
+                  <h5 className="card-title text-dark mb-3 ">
+                    {News.headline.main}
+                  </h5>
+                  <h6 className="card-subtitle mb-3 text-muted text-truncate">
+                    {News.byline.original || "Unknown Author"}
+                  </h6>
+                  <p className="card-text text-muted text-truncate-three-lines">
+                    {News.lead_paragraph || "No description available."}
+                  </p>
+                  <div className="mt-auto d-flex justify-content-between">
+                    <Link to={News.web_url} target="_blank" rel="noopener noreferrer">
+                      <button type="button" className="btn btn-info btn-sm">
+                      News Page
+                      </button>
+                    </Link>
+                    <button
+                      type="button"
+                      className={`btn btn-sm ${isSaved(News._id) ? "btn-danger" : "btn-primary"}`}
+                      onClick={() => {
+                        if (isSaved(News._id)) {
+                          dispatch(Unsave(News._id));
+                        } else {
+                          dispatch(Save(News._id));
+                        }
+                      }}
+                    >
+                      {isSaved(News._id) ? "Unsave" : "Save"}
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-        )
-      ))}
+      </div>
     </>
   );
 }

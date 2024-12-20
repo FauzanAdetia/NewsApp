@@ -5,11 +5,18 @@ body{
   padding: 100px;
 }
 
-
-
 .text-truncate-two-lines {
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Jumlah baris */
+  -webkit-line-clamp: 3; /* Jumlah baris */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Supaya teks membungkus */
+}
+
+.text-truncate-three-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Jumlah baris */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
