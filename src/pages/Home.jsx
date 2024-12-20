@@ -40,7 +40,7 @@ export default function Home() {
                     {News.lead_paragraph || "No description available."}
                   </p>
                   <div className="mt-auto d-flex justify-content-between">
-                    <Link to={News.web_url} target="_blank" rel="noopener noreferrer">
+                    <Link to={News.web_url}>
                       <button type="button" className="btn btn-info btn-sm">
                         News Page
                       </button>

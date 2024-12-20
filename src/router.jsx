@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import {createBrowserRouter} from 'react-router-dom';
 
-import MainLayout from './layouts/MainLayout';
+import MainLayout from './components/MainLayout.jsx';
 import Covid from './pages/Covid';
 import Programming from './pages/Programming';
 import Home from './pages/Home.jsx';
